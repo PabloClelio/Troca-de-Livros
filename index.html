@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troca de Livros</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo ao Sistema de Troca de Livros</h1>
+    </header>
+
+    <main>
+        <div id="userSection" style="display: none;">
+            <form id="livroForm">
+                <input type="text" id="titulo" placeholder="Título do Livro" required>
+                <input type="text" id="autor" placeholder="Autor" required>
+                <button type="submit">Adicionar Livro</button>
+            </form>
+
+            <section>
+                <h2>Livros Disponíveis</h2>
+                <ul id="livrosLista"></ul>
+            </section>
+
+            <section>
+                <h2>Solicitações de Troca Recebidas</h2>
+                <ul id="solicitacoesLista"></ul>
+            </section>
+
+            <section>
+                <h2>Solicitações de Troca Feitas</h2>
+                <ul id="solicitacoesFeitasLista"></ul>
+            </section>
+
+            <button id="logoutButton">Sair</button>
+        </div>
+
+        <div id="authSection">
+            <section>
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                    <input type="password" id="loginPassword" placeholder="Senha" required>
+                    <button type="submit">Login</button>
+                </form>
+            </section>
+
+            <section>
+                <h2>Registro</h2>
+                <form id="registerForm">
+                    <input type="text" id="registerName" placeholder="Nome de Exibição" required>
+                    <input type="email" id="registerEmail" placeholder="E-mail" required>
+                    <input type="password" id="registerPassword" placeholder="Senha" required>
+                    <button type="submit">Registrar</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCNDmJC-TGC6Z_Y7vx3aIAzqw-PBfTT0xI",
+            authDomain: "troca-de-livros-e54fe.firebaseapp.com",
+            projectId: "troca-de-livros-e54fe",
+            storageBucket: "troca-de-livros-e54fe.appspot.com",
+            messagingSenderId: "35452883079",
+            appId: "1:35452883079:web:8d138027c2f0abcd292822"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+
+        window.db = db;
+        window.auth = auth;
+    </script>
+
+    <!-- Script de funcionalidade -->
+    <script src="app.js"></script>
+</body>
+</html>
